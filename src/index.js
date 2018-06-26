@@ -5,11 +5,7 @@ const app = document.getElementById("app");
 function primeFactorOf(numberToFactorize) {
   const primes = [];
 
-  if (numberToFactorize % 2 == 0) {
-    primes.push(2);
-    numberToFactorize /= 2;
-  }
-  if (numberToFactorize % 2 == 0) {
+  while (numberToFactorize % 2 == 0) {
     primes.push(2);
     numberToFactorize /= 2;
   }
