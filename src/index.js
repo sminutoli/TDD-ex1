@@ -30,3 +30,10 @@ app.innerHTML += `<h1>Numeros primos</h1>`;
   expect(actual).toEqual(expected);
   app.innerHTML += `<p>3 { 3 } pass</p>`;
 }
+
+{
+  const actual = primeFactorOf(5);
+  const expected = [5];
+  expect(actual).toEqual(expected);
+  app.innerHTML += `<p>5 { 5 } pass</p>`;
+}
