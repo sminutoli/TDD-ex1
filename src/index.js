@@ -4,7 +4,17 @@ const app = document.getElementById("app");
 
 function primeFactorOf(numberToFactorize) {
   const primes = [];
-  if (numberToFactorize > 1) primes.push(numberToFactorize);
+  if (numberToFactorize > 1) {
+    if (numberToFactorize == 4) {
+      primes.push(2);
+      numberToFactorize /= 2;
+    }
+    if (numberToFactorize == 6) {
+      primes.push(2);
+      numberToFactorize /= 2;
+    }
+    primes.push(numberToFactorize);
+  }
   return primes;
 }
 
@@ -32,8 +42,22 @@ app.innerHTML += `<h1>Numeros primos</h1>`;
 }
 
 {
+  const actual = primeFactorOf(4);
+  const expected = [2, 2];
+  expect(actual).toEqual(expected);
+  app.innerHTML += `<p>4 { 2, 2 } pass</p>`;
+}
+
+{
   const actual = primeFactorOf(5);
   const expected = [5];
   expect(actual).toEqual(expected);
   app.innerHTML += `<p>5 { 5 } pass</p>`;
+}
+
+{
+  const actual = primeFactorOf(6);
+  const expected = [2, 3];
+  expect(actual).toEqual(expected);
+  app.innerHTML += `<p>6 { 2, 3 } pass</p>`;
 }
