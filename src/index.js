@@ -4,8 +4,7 @@ const app = document.getElementById("app");
 
 function primeFactorOf(numberToFactorize) {
   const primes = [];
-  if (numberToFactorize == 2) primes.push(2);
-  if (numberToFactorize == 3) primes.push(3);
+  if (numberToFactorize > 1) primes.push(numberToFactorize);
   return primes;
 }
 
