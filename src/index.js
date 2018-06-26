@@ -5,15 +5,14 @@ const app = document.getElementById("app");
 function primeFactorOf(numberToFactorize) {
   const primes = [];
 
-  while (numberToFactorize % 2 == 0) {
-    primes.push(2);
-    numberToFactorize /= 2;
+  let divisor = 2;
+  while (numberToFactorize > 1) {
+    while (numberToFactorize % divisor == 0) {
+      primes.push(divisor);
+      numberToFactorize /= divisor;
+    }
+    divisor++;
   }
-  while (numberToFactorize % 3 == 0) {
-    primes.push(3);
-    numberToFactorize /= 3;
-  }
-  if (numberToFactorize > 1) primes.push(numberToFactorize);
 
   return primes;
 }
@@ -81,4 +80,19 @@ app.innerHTML += `<h1>Numeros primos</h1>`;
   const expected = [3, 3];
   expect(actual).toEqual(expected);
   app.innerHTML += `<p>9 { 3, 3 } pass</p>`;
+}
+
+{
+  const actual = primeFactorOf(10);
+  const expected = [2, 5];
+  expect(actual).toEqual(expected);
+  app.innerHTML += `<p>10 { 2, 5 } pass</p>`;
+}
+
+{
+  const numberToFactorize = 2 * 2 * 3 * 3 * 11 * 11;
+  const actual = primeFactorOf(numberToFactorize);
+  const expected = [2, 2, 3, 3, 11, 11];
+  expect(actual).toEqual(expected);
+  app.innerHTML += `<p>${numberToFactorize} { ${expected} } pass</p>`;
 }
