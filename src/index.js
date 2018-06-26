@@ -9,6 +9,10 @@ function primeFactorOf(numberToFactorize) {
     primes.push(2);
     numberToFactorize /= 2;
   }
+  while (numberToFactorize % 3 == 0) {
+    primes.push(3);
+    numberToFactorize /= 3;
+  }
   if (numberToFactorize > 1) primes.push(numberToFactorize);
 
   return primes;
@@ -70,4 +74,11 @@ app.innerHTML += `<h1>Numeros primos</h1>`;
   const expected = [2, 2, 2];
   expect(actual).toEqual(expected);
   app.innerHTML += `<p>8 { 2, 2, 2 } pass</p>`;
+}
+
+{
+  const actual = primeFactorOf(9);
+  const expected = [3, 3];
+  expect(actual).toEqual(expected);
+  app.innerHTML += `<p>9 { 3, 3 } pass</p>`;
 }
