@@ -4,17 +4,13 @@ const app = document.getElementById("app");
 
 function primeFactorOf(numberToFactorize) {
   const primes = [];
-  if (numberToFactorize > 1) {
-    if (numberToFactorize == 4) {
-      primes.push(2);
-      numberToFactorize /= 2;
-    }
-    if (numberToFactorize == 6) {
-      primes.push(2);
-      numberToFactorize /= 2;
-    }
-    primes.push(numberToFactorize);
+
+  if (numberToFactorize % 2 == 0) {
+    primes.push(2);
+    numberToFactorize /= 2;
   }
+  if (numberToFactorize > 1) primes.push(numberToFactorize);
+
   return primes;
 }
 
