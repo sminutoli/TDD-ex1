@@ -1,14 +1,31 @@
 export default function primeFactorOf(numberToFactorize) {
-  const primes = [];
+  let factors;
+  let divisor;
 
-  let divisor = 2;
-  while (numberToFactorize > 1) {
-    while (numberToFactorize % divisor === 0) {
-      primes.push(divisor);
-      numberToFactorize /= divisor;
-    }
-    divisor++;
+  initialize();
+
+  while (isFactorizable()) factorize();
+
+  return factors;
+
+  function initialize() {
+    factors = [];
+    divisor = 2;
   }
 
-  return primes;
+  function isFactorizable() {
+    return numberToFactorize > 1;
+  }
+
+  function factorize() {
+    while (numberToFactorize % divisor === 0) {
+      factors.push(divisor);
+      numberToFactorize /= divisor;
+    }
+    calculateNextDivisor();
+  }
+
+  function calculateNextDivisor() {
+    divisor++;
+  }
 }
